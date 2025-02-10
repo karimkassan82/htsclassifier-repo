@@ -9,37 +9,45 @@ const findHeadingIdOfTheSearch = async (req, res, next) => {
   }
 
   try {
-    // ✅ Step 1: Perform word-by-word search in the description field
+    // ✅ Step 1: Exact phrase match (Highest priority)
     const phraseSearch = {
-      description: { $regex: `^${query}$`, $options: "i" },
+      description: { $regex: `\\b${query}\\b`, $options: "i" }, // Match exact phrase boundaries
     };
+
+    // ✅ Step 2: Loose whole query match (Medium priority)
     const searchWords = query
       .split(/\s+/)
       .map((word) => word.trim())
       .filter(Boolean);
+
+    const looseWholeQuerySearch = {
+      description: { $regex: searchWords.join(".*"), $options: "i" }, // Match all words appearing together in any order
+    };
+
+    // ✅ Step 3: Individual word search (Lowest priority)
     const wordSearch = searchWords.map((word) => ({
-      description: { $regex: word, $options: "i" },
+      description: { $regex: `\\b${word}\\b`, $options: "i" }, // Match whole words only
     }));
 
-    // ✅ Step 2: Get unique headingId values from descriptions that match
+    // ✅ Step 4: Get unique headingId values (Prioritize by importance)
     const headingIds = await HtsClassifier.aggregate([
-      { $match: { $or: [phraseSearch, ...wordSearch] } }, // Find matches
-      { $group: { _id: "$headingId" } }, // Extract unique headingId values
+      { $match: { $or: [phraseSearch, looseWholeQuerySearch, ...wordSearch] } }, // Prioritized search
+      { $group: { _id: "$headingId" } },
     ]);
 
     const uniqueHeadingIds = headingIds.map((item) => item._id);
 
-    // ✅ Step 3: Find all records that match any of the headingIds AND indent = 0
+    // ✅ Step 5: Find all records that match headingId (Prioritize indent = 0)
     let results = await HtsClassifier.find({
       headingId: { $in: uniqueHeadingIds },
-      indent: "0", // 🔥 Filter to only indent = 0
+      indent: "0",
     }).select("htsNo indent description headingId uniqueIndex");
 
-    // 🚨 Fallback: If no headingId matches, return only Step 1 results, but filter indent = 0
+    // 🚨 Fallback: If no headingId matches, return best available match (with indent = 0)
     if (results.length === 0) {
       results = await HtsClassifier.find({
-        $or: [phraseSearch, ...wordSearch],
-        indent: "0", // 🔥 Ensure fallback results also have indent = 0
+        $or: [phraseSearch, looseWholeQuerySearch, ...wordSearch],
+        indent: "0",
       }).select("htsNo indent description headingId uniqueIndex");
     }
 
