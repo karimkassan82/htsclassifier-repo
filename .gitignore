@@ -19,6 +19,8 @@ dist-ssr/
 out/
 .next/
 .cache/
+.vite/
+.vitepress/
 
 # Environment variables
 .env
