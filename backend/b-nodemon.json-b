@@ -1,8 +1,0 @@
-{
-    "env": {
-        "DB_USER": "hassankarim82",
-        "DB_PASSWORD": "HtsClassifierProject",
-        "DB_NAME": "hts-classifier"
-    }
-}
-
