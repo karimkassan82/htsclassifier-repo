@@ -1,0 +1,21 @@
+.descriptions_list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+  max-width: 50rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Increased spacing for better separation */
+}
+
+.descriptions_list li {
+  flex: 1 1 calc(50% - 1.5rem); /* Makes each item take 50% width minus gap */
+  max-width: calc(50% - 1.5rem); /* Ensures items don’t grow beyond 50% */
+  text-align: center;
+  cursor: pointer; /* Makes the item look clickable */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition */
+}
+
+

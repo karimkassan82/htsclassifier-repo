@@ -1,0 +1,21 @@
+.main {
+    width: 90%;
+    max-width: 70rem;
+    margin: auto;
+  }
+
+  .classifier_section {
+    padding: 2rem;
+    border-radius: 6px;
+    background-color: #1e90ff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .classifier_section {
+    text-align: center;
+  }
+  
+  .classifier_section p {
+    color: whitesmoke;
+    font-size: 1.4rem;
+  }

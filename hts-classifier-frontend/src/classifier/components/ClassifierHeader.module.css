@@ -1,0 +1,24 @@
+.classifier_header {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.classifier_header p {
+  font-size: 1.3rem;
+}
+
+.classifier_header img {
+  width: 19rem; /* Shrink overall size */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+  background-color: transparent;
+  display: block;
+  margin: auto;
+}
+
+/* Responsive Adjustments for Mobile */
+@media (max-width: 768px) {
+  .classifier_header img {
+    width: 18rem; /* Further reduce size on small screens */
+  }
+}
