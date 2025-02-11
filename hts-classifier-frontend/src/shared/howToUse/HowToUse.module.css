@@ -1,0 +1,27 @@
+.how_to_use_container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #1e90ff; /* Darker background */
+  color: #ffffff; /* Light text for readability */
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+h1,
+h2 {
+  color: #f0f0f0;
+}
+
+p {
+  line-height: 1.6;
+}
+
+a {
+  color: #90ff1e; /* Highlighted greenish link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

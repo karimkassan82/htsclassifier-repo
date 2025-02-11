@@ -8,7 +8,7 @@
 }
 
 .classifier_header img {
-  width: 19rem; /* Shrink overall size */
+  width: 15rem; /* Shrink overall size */
   height: auto; /* Maintain aspect ratio */
   object-fit: contain;
   background-color: transparent;
