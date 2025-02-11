@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classes from "./HowToUse.module.css"; // Import CSS module
 
 const HowToUse = () => {
@@ -5,49 +6,48 @@ const HowToUse = () => {
     <main className={classes.how_to_use_container}>
       <h1>How to Use the HTS Classifier</h1>
       <p>
-        The **HTS Classifier** is designed to help users easily determine the
-        **Harmonized Tariff Schedule (HTS) code** for their items, following
-        **U.S. Customs and Border Protection (CBP) guidelines**.
+        The <strong>HTS Classifier</strong> is designed to help users easily
+        determine the
+        <strong> Harmonized Tariff Schedule (HTS) code </strong> for their
+        items, following
+        <strong> U.S. Customs and Border Protection (CBP) guidelines</strong>.
       </p>
-
       <h2>Step 1: Enter a Few Words</h2>
       <p>
-        Simply type a **general description** of your item in the search bar.
-        For example, if you are classifying **wooden furniture**, enter:
-        <strong> "wooden chair" </strong> or **"oak table."**
+        Simply type a <strong>general description</strong> of your item in the
+        search bar. For example, if you are classifying{" "}
+        <strong>wooden furniture</strong>, enter:
+        <strong> "wooden chair" </strong> or <strong>"oak table."</strong>
       </p>
-
       <h2>Step 2: Select the Closest Description</h2>
       <p>
-        The system will generate a list of **possible HTS classifications**.
-        Choose the description that **best matches** your item.
+        The system will generate a list of{" "}
+        <strong>possible HTS classifications</strong>. Choose the description
+        that <strong>best matches</strong> your item.
       </p>
-
       <h2>Step 3: Continue Refining</h2>
       <p>
-        If more details are needed, the classifier will **guide you step by
-        step** through the appropriate **HTS structure**.
+        If more details are needed, the classifier will{" "}
+        <strong>guide you step by step</strong>
+        through the appropriate <strong>HTS structure</strong>.
       </p>
-
       <h2>Step 4: Get Your HTS Code</h2>
       <p>
-        Once the classification is complete, your **final HTS code** will be
-        displayed. This is the code you will use for **import/export
-        documentation**.
+        Once the classification is complete, your{" "}
+        <strong>final HTS code</strong> will be displayed. This is the code you
+        will use for <strong>import/export documentation</strong>.
       </p>
-
       <h2>Why Use This Tool?</h2>
       <p>
-        ✅ **Accurate:** Follows CBP classification guidelines. <br />
-        ✅ **Fast:** Find your HTS code in just a few clicks. <br />✅
-        **User-Friendly:** No deep tariff knowledge required—just enter a few
-        words.
+        ✅ <strong>Accurate:</strong> Follows CBP classification guidelines.{" "}
+        <br />✅ <strong>Fast:</strong> Find your HTS code in just a few clicks.{" "}
+        <br />✅ <strong>User-Friendly:</strong> No deep tariff knowledge
+        required—just enter a few words.
       </p>
-
       <p>
         Need additional guidance? Refer to the{" "}
-        <a href="/privacy-policy">Privacy Policy</a> for more details on data
-        use.
+        <Link to="/privacy-policy">Privacy Policy</Link> for more details on
+        data use.
       </p>
     </main>
   );
