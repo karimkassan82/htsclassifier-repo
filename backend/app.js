@@ -1,8 +1,3 @@
-app.use((req, res, next) => {
-  console.log(`📢 Received ${req.method} request to ${req.url}`);
-  next();
-});
-
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -11,7 +6,13 @@ const bodyParser = require("body-parser");
 
 const htsClassifierRoutes = require("./routes/htsClassifier-routes");
 
-const app = express();
+const app = express(); // ✅ Now app is defined!
+
+// ✅ Move the logging middleware here, AFTER app is defined
+app.use((req, res, next) => {
+  console.log(`📢 Received ${req.method} request to ${req.url}`);
+  next();
+});
 
 // Middleware (ORDER MATTERS)
 app.use(bodyParser.json()); // Parses JSON requests
@@ -33,7 +34,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(process.env.MONGO_URI) // ✅ Remove useNewUrlParser & useUnifiedTopology
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ Connected to MongoDB");
 
