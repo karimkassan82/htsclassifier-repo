@@ -78,7 +78,7 @@ const Classifier = () => {
     if (isHtsComplete) return; // ✅ Stop API call if HTS is complete
 
     const dynamicIndent = indent + 1;
-    console.log("Sending to backend:", { uniqueIndex, dynamicIndent });
+    // console.log("Sending to backend:", { uniqueIndex, dynamicIndent });
 
     try {
       setLoading(true); // ✅ Show loader for this request
