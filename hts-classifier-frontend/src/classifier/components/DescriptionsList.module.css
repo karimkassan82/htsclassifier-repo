@@ -18,4 +18,9 @@
   transition: background-color 0.2s ease-in-out; /* Smooth transition */
 }
 
-
+@media (max-width: 768px) {
+  .descriptions_list li {
+    flex: 1 1 100%; /* Makes each item take full width */
+    max-width: 100%; /* Ensures items take full width */
+  }
+}
